@@ -1,69 +1,187 @@
-import Image from "next/image";
+
+"use client";
+
+import { useState } from "react";
+
+const services = [
+  {
+    name: "House Washing",
+    description: "Remove dirt, mold and grime from your home's exterior.",
+    image: "/house.jpg",
+  },
+  {
+    name: "Driveway Cleaning",
+    description: "Restore the look of your concrete and remove buildup.",
+    image: "/driveway.jpg",
+  },
+  {
+    name: "Sidewalk Cleaning",
+    description: "Keep your walkways looking clean and welcoming.",
+    image: "/driveway.jpg",
+  },
+  {
+    name: "Patio & Deck Cleaning",
+    description: "Refresh your outdoor living spaces.",
+    image: "/patio.jpg",
+  },
+];
 
 export default function Home() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main>
+      {/* NAVIGATION */}
+      <nav className="nav">
+        <a href="#" className="logo">
+          <span>Reese's</span>
+          <small>POWER WASHING SERVICES</small>
+        </a>
+
+        <div className="nav-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#results">Results</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <a href="#contact" className="button">
+          Get a Free Quote
+        </a>
+      </nav>
+
+      {/* HERO */}
+      <section id="home" className="hero">
+        <div className="hero-content">
+          <p className="eyebrow">RESIDENTIAL & COMMERCIAL</p>
+          <h1>
+            WE WASH IT ALL.
+            <br />
+            <span>YOU ENJOY IT ALL.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="hero-text">
+            Professional pressure washing for your
+            home, driveway and more.
+          </p>
+          <a href="#contact" className="button">
+            GET A FREE QUOTE →
+          </a>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="section">
+        <p className="eyebrow blue">OUR SERVICES</p>
+        <h2>RESIDENTIAL PRESSURE WASHING</h2>
+
+        <div className="services-grid">
+          {services.map((service) => (
+            <article className="service-card" key={service.name}>
+              <img src={service.image} alt="" />
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* RESULTS */}
+      <section id="results" className="results section">
+        <p className="eyebrow blue">REAL RESULTS</p>
+        <h2>BEFORE & AFTER</h2>
+        <p>
+          See the difference a professional cleaning
+          can make.
+        </p>
+        <div className="results-grid">
+          <img src="/driveway.jpg" alt="Driveway cleaning example" />
+          <img src="/house.jpg" alt="House washing example" />
+        </div>
+        <small>
+          Replace these placeholders with actual project photos.
+        </small>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="section about">
+        <div>
+          <p className="eyebrow blue">WHY CHOOSE REESE'S?</p>
+          <h2>A CLEANER PROPERTY STARTS HERE.</h2>
+          <p>
+            Looking for a fresh, clean exterior?
+            Get in touch to discuss your pressure
+            washing project.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="benefits">
+          <p>✓ Residential & commercial service</p>
+          <p>✓ Convenient quote requests</p>
+          <p>✓ Exterior cleaning solutions</p>
+          <p>✓ Friendly, professional service</p>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="contact section">
+        <div>
+          <p className="eyebrow blue">LET'S GET STARTED</p>
+          <h2>REQUEST YOUR FREE QUOTE</h2>
+          <p>
+            Tell us what you need cleaned and
+            we'll get back to you.
+          </p>
+        </div>
+
+        <form
+          className="quote-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSubmitted(true);
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Your name"
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone number"
+            required
+          />
+          <select defaultValue="" required>
+            <option value="" disabled>Select a service</option>
+            {services.map((service) => (
+              <option key={service.name}>
+                {service.name}
+              </option>
+            ))}
+          </select>
+          <textarea
+            placeholder="Tell us about your project"
+            rows={4}
+          />
+          <button className="button" type="submit">
+            REQUEST A QUOTE →
+          </button>
+          {submitted && (
+            <p>
+              Demo form only — connect a form service
+              before accepting real requests.
+            </p>
+          )}
+        </form>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <h2>REESE'S POWER WASHING SERVICES</h2>
+        <p>Residential & Commercial</p>
+        <a href="tel:912-687-9583">Phone: 912-687-9583</a>
+        <br/>
+        <a href="https://www.facebook.com/thomas.reese.3597/photos">Facebook</a>
+      </footer>
+    </main>
   );
 }
