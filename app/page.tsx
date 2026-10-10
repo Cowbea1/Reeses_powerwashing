@@ -98,9 +98,7 @@ export default function Home() {
           <img src="/driveway.jpg" alt="Driveway cleaning example" />
           <img src="/house.jpg" alt="House washing example" />
         </div>
-        <small>
-          Replace these placeholders with actual project photos.
-        </small>
+        
       </section>
 
       {/* ABOUT */}
